@@ -13,7 +13,8 @@ namespace MVCStartApp.Models.Repositories
         {
             _context = context;
         }
-                public async Task AddUser(User user)
+        
+        public async Task AddUser(User user)
         {
             // Добавление пользователя
             var entry = _context.Entry(user);
@@ -22,6 +23,11 @@ namespace MVCStartApp.Models.Repositories
 
             // Сохранение изенений
             await _context.SaveChangesAsync();
+        }
+        public async Task<User[]> GetUsers()
+        {
+            // Получим всех активных пользователей
+            return await _context.Users.ToArrayAsync();
         }
     }
 }

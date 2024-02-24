@@ -5,14 +5,14 @@ using MVCStartApp.Models.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connection = builder.Configuration.GetConnectionString("DefaultConnectiion");
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<BlogContext>(options => options.UseSqlServer(connection));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 // регистрация сервиса репозитория для взаимодействия с базой данных
-builder.Services.AddSingleton<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
 var app = builder.Build();
 

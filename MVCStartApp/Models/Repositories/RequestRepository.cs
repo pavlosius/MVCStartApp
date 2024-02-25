@@ -27,5 +27,11 @@ namespace MVCStartApp.Models.Repositories
             // Сохранение изенений
             await _context.SaveChangesAsync();
         }
+
+        public async Task<Request[]> GetRequests()
+        {
+            // Получим всех активных пользователей
+            return await _context.Requests.ToArrayAsync();
+        }
     }
 }
